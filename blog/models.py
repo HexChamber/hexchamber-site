@@ -12,6 +12,14 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from blog.fields import OrderField
 
+
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            status=Post.Status.PUBLISHED
+        )
+
+
 class Post(models.Model):
     class Status(models.TextChoices):
         DRAFT = 'DF', 'Draft'
@@ -45,6 +53,8 @@ class Post(models.Model):
         choices=Syntax.choices,
         default=Syntax.SHELL
     )
+    published = PublishedManager()
+    objects = models.Manager()
 
     class Meta:
         ordering = ['-publish']

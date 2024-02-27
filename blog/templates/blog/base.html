@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static bulma_tags %}
+
+{% block app_navbar %}
+<a class="navbar-item" href="#">Blog</a>
+<div class="navbar-item field has-addons">
+    <div class="control">
+        <input class="input" type="text" name="search">
+    </div>
+    <div class="control">
+        <a href="#" class="button is-info">
+            Search
+        </a>
+        </div>
+    </div>
+{% endblock %}
+{% block app_content %}
+<div class="column is-9">
+    {% block content %}
+    {% endblock %}
+</div>
+<div class="column is-3">
+    <div class="block box">
+        <p class="is-italic">This site is now home to <strong>0</strong> total posts thus far.</p>
+    </div>
+    <aside class="menu box">
+        <h4 class="menu-label">Popular</h4>
+        <ul class="menu-list">
+            <li>
+                <a href="#">Fake post 1</a>
+            </li>
+            <li>
+                <a href="#">Fake post 2</a>
+            </li>
+        </ul>
+    </aside>
+    <aside class="menu-box">
+        {% block sidenav %}
+        {% endblock %}
+    </aside>
+    <div class="buttons">
+        <a class="button is-block is-fullwidth is-dark is-outlined" href="#">Subscribe to RSS Feed</a>
+        <a class="button is-block is-fullwidth is-primary" href="#">Join the newsletter</a>
+    </div>
+</div>
+{% endblock %}
