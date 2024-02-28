@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static bulma_tags %}
+{% block extra_css %}
+<link href="{% static 'tinymce/skins/content/dark/content.min.css' %}" rel="stylesheet">
+{% endblock %}
 
 {% block app_navbar %}
 <a class="navbar-item" href="#">Blog</a>
@@ -43,4 +46,8 @@
         <a class="button is-block is-fullwidth is-primary" href="#">Join the newsletter</a>
     </div>
 </div>
+{% endblock %}
+{% block extra_javascript %}
+<script src="{% static 'tinymce/tinymce/min.jsx' %}"></script>
+{% block page_javascript %}{% endblock %}
 {% endblock %}

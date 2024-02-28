@@ -1,0 +1,58 @@
+{% extends "blog/base.html" %}
+{% load bulma_tags %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block banner %}
+<h2 class="title is-2 has-text-centered">{{ post.title }}</h2>
+<p class="subtitle has-text-centered is-italic">Published {{ post.publish }} by {{ post.author.username }}</p>
+{% endblock %}
+{% block content %}
+<div class="box">
+    <div class="block content indented">
+        {{ post.body|safe }}
+    </div>
+    <div class="columns is-centered">
+        <div class="column is-three-fifths">
+            <div class="buttons is-centered">
+                <a class="button is-block is-fullwidth is-info" href="#">Share this post</a>
+            </div>
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column is-four-fifths">
+            <h4 class="title has-text-centered has-text-weight-bold">
+                0 comments
+            </h4>
+            <div class="card has-background-{% cycle 'primary-dark' 'primary' %} m-auto">
+                <div class="card-header">
+                    <p class="card-header-title">
+                        Fake Commenter
+                    </p>
+                    <p class="subtitle has-text-weight-light is-italic is-size-7">41 seconds ago</p>
+                </div>
+                <div class="card-content">
+                    <div class="content indented">
+                        <p>This is a fake comment for UI design purposes.</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            {% resetcycle %}
+        </div>
+    </div>
+    <div class="columns">
+        <div class="column is-two-thirds">
+            <div class="box">
+                <p>Comment form goes here</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block sidenav %}
+<h4 class="menu-label">Similar posts</h4>
+<ul class="menu-list">
+    <li><a href="#">Fake post 1</a></li>
+    <li><a href="#">Fake post 2</a></li>
+</ul>
+{% endblock %}
+

@@ -184,3 +184,4 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True
 }
+STATIC_ROOT = BASE_DIR / 'static'
