@@ -1,0 +1,51 @@
+{% extends "social_base.html" %}
+{% load bulma_tags %}
+{% block title %}Login{% endblock %}
+{% block banner %}
+<h2 class="title is-2 has-text-centered">
+    Login
+</h2>
+<p class="subtitle has-text-centered">You may login to your account below (if you have one):</p>
+{% endblock %}
+{% block content %}
+{% if form.errors %}
+<div class="notification is-danger">
+    <button class="delete"></button>
+    <div class="content indented">
+        <p>Your username and password combination did not match any found in our records, <em>please try again</em>.</p>
+    </div>
+</div>
+{% endif %}
+<div class="columns is-centered">
+    <div class="column is-half">
+        <div class="box">
+            <form action="{% url 'login' %}" method="post">
+                {{ form|bulma }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="field">
+                    <p class="control">
+                        <button type="submit" class="button is-block is-primary is-fullwidth">Login</button>
+                    </p>
+                </div>
+            </form>
+            <div class="block">
+                <a href="{% url 'password_reset' %}">Forgot your password?</a>
+            </div>
+            <div class="block">
+                <div class="buttons is-centered">
+                    <a class="button is-facebook" href="#">
+                        <span class="icon"><i class="fa-brands fa-facebook"></i></span>
+                    </a>
+                    <a class="button is-twitter" href="#">
+                        <span class="icon"><i class="fa-brands fa-twitter"></i></span>
+                    </a>
+                    <a class="button is-google" href="#">
+                        <span class="icon"><i class="fa-brands fa-google"></i></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

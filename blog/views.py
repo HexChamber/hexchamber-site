@@ -10,7 +10,8 @@ def post_list(request):
         request,
         'blog/post/list.html',
         {
-            'posts': posts
+            'posts': posts,
+            'currentapp': 'blog'
         }
     )
 
@@ -25,6 +26,7 @@ def post_detail(request, id):
         request,
         'blog/post/detail.html',
         {
-            'post': post
+            'post': post,
+            'currentapp': 'blog'
         }
     )

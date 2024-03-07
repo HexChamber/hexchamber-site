@@ -15,6 +15,7 @@ class Profile(models.Model):
         upload_to='users/%Y/%m/%d/',
         blank=True
     )
+    about_me = models.TextField(default='')
 
     def __str__(self):
             return f'Profile for {self.user.username}'
